@@ -1,0 +1,14 @@
+node_modules
+dist
+.DS_Store
+
+# Database files
+data/
+*.db
+*.db-journal
+
+# Log files
+*.log
+
+# Environment variables
+.env 

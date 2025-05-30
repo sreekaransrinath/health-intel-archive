@@ -23,3 +23,13 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Backend specific
+backend/node_modules/
+backend/dist/
+backend/data/
+backend/*.log
+backend/.env
+
+# Documentation folder (will be committed once, then ignored)
+docs/

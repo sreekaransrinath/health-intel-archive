@@ -6,17 +6,19 @@ import { Input } from '@/components/ui/input';
 
 export const Header = () => {
   return (
-    <header className="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6">
-      <div className="flex items-center space-x-4">
+    <header className="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-4 lg:px-6">
+      <div className="flex items-center space-x-2 lg:space-x-4 min-w-0">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
             <span className="text-white font-bold text-sm">MD</span>
           </div>
-          <h1 className="text-xl font-semibold text-gray-900">MedDoc Intelligence</h1>
+          <h1 className="text-lg lg:text-xl font-semibold text-gray-900 truncate">
+            MedDoc Intelligence
+          </h1>
         </div>
       </div>
       
-      <div className="flex-1 max-w-2xl mx-8">
+      <div className="flex-1 max-w-2xl mx-4 lg:mx-8 hidden md:block">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <Input 
@@ -26,15 +28,18 @@ export const Header = () => {
         </div>
       </div>
       
-      <div className="flex items-center space-x-2">
-        <Button variant="outline" size="sm">
+      <div className="flex items-center space-x-1 lg:space-x-2">
+        <Button variant="outline" size="sm" className="hidden sm:flex">
           <Upload className="w-4 h-4 mr-2" />
           Upload
+        </Button>
+        <Button variant="outline" size="sm" className="sm:hidden">
+          <Upload className="w-4 h-4" />
         </Button>
         <Button variant="ghost" size="sm">
           <Bell className="w-4 h-4" />
         </Button>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" className="hidden sm:flex">
           <Settings className="w-4 h-4" />
         </Button>
       </div>

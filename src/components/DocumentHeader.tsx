@@ -22,29 +22,35 @@ const getTypeColor = (type: string) => {
 
 export const DocumentHeader: React.FC<DocumentHeaderProps> = ({ document }) => {
   return (
-    <div className="border-b border-gray-200 p-6">
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <h1 className="text-xl font-semibold text-gray-900 mb-2">
+    <div className="border-b border-gray-200 p-4 lg:p-6">
+      <div className="flex flex-col lg:flex-row lg:items-start justify-between mb-4 space-y-4 lg:space-y-0">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-lg lg:text-xl font-semibold text-gray-900 mb-2 truncate">
             {document.title}
           </h1>
-          <div className="flex items-center space-x-4 text-sm text-gray-600">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 text-sm text-gray-600 space-y-1 sm:space-y-0">
             <span>{new Date(document.date).toLocaleDateString()}</span>
-            <span>•</span>
-            <span>{document.provider}</span>
-            <span>•</span>
-            <span>{document.facility}</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="truncate">{document.provider}</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="truncate">{document.facility}</span>
           </div>
         </div>
         
-        <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm">
+        <div className="flex items-center space-x-2 flex-shrink-0">
+          <Button variant="outline" size="sm" className="hidden sm:flex">
             <Download className="w-4 h-4 mr-2" />
             Download
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" className="sm:hidden">
+            <Download className="w-4 h-4" />
+          </Button>
+          <Button variant="outline" size="sm" className="hidden sm:flex">
             <Share className="w-4 h-4 mr-2" />
             Share
+          </Button>
+          <Button variant="outline" size="sm" className="sm:hidden">
+            <Share className="w-4 h-4" />
           </Button>
           <Button variant="outline" size="sm">
             <Flag className="w-4 h-4" />
@@ -52,16 +58,16 @@ export const DocumentHeader: React.FC<DocumentHeaderProps> = ({ document }) => {
         </div>
       </div>
       
-      <div className="flex items-center space-x-3">
-        <Badge className={`${getTypeColor(document.type)}`}>
+      <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+        <Badge className={`${getTypeColor(document.type)} w-fit`}>
           {document.type}
         </Badge>
         {document.status === 'needs_review' && (
-          <Badge variant="outline" className="border-amber-200 text-amber-600">
+          <Badge variant="outline" className="border-amber-200 text-amber-600 w-fit">
             Needs Review
           </Badge>
         )}
-        <span className="text-sm text-gray-500">
+        <span className="text-xs lg:text-sm text-gray-500">
           Processing confidence: {Math.round(document.confidence * 100)}%
         </span>
       </div>

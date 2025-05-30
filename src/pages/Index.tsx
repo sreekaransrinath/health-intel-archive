@@ -8,8 +8,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <div className="flex h-[calc(100vh-4rem)]">
-        <Sidebar />
+      <div className="flex h-[calc(100vh-4rem)] overflow-hidden">
+        <div className="hidden lg:block">
+          <Sidebar />
+        </div>
         <main className="flex-1 overflow-hidden">
           <DocumentBrowser />
         </main>

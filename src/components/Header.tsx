@@ -1,8 +1,15 @@
-
 import React from 'react';
 import { Search, Bell, Settings, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { DocumentUpload } from './DocumentUpload';
 
 export const Header = () => {
   return (
@@ -29,13 +36,33 @@ export const Header = () => {
       </div>
       
       <div className="flex items-center space-x-1 lg:space-x-2">
-        <Button variant="outline" size="sm" className="hidden sm:flex">
-          <Upload className="w-4 h-4 mr-2" />
-          Upload
-        </Button>
-        <Button variant="outline" size="sm" className="sm:hidden">
-          <Upload className="w-4 h-4" />
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm" className="hidden sm:flex">
+              <Upload className="w-4 h-4 mr-2" />
+              Upload
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[600px]">
+            <DialogHeader>
+              <DialogTitle>Upload Documents</DialogTitle>
+            </DialogHeader>
+            <DocumentUpload />
+          </DialogContent>
+        </Dialog>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" size="sm" className="sm:hidden">
+              <Upload className="w-4 h-4" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[600px]">
+            <DialogHeader>
+              <DialogTitle>Upload Documents</DialogTitle>
+            </DialogHeader>
+            <DocumentUpload />
+          </DialogContent>
+        </Dialog>
         <Button variant="ghost" size="sm">
           <Bell className="w-4 h-4" />
         </Button>

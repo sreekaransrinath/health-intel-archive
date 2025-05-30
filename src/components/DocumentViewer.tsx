@@ -286,21 +286,33 @@ export const DocumentViewer: React.FC<DocumentViewerProps> = ({ document }) => {
   );
 };
 
-const MetadataSection = ({ title, data }) => (
+interface MetadataSectionProps {
+  title: string;
+  data: Record<string, string>;
+}
+
+const MetadataSection: React.FC<MetadataSectionProps> = ({ title, data }) => (
   <div>
     <h4 className="font-medium text-gray-900 mb-3">{title}</h4>
     <div className="space-y-2">
       {Object.entries(data).map(([key, value]) => (
         <div key={key} className="flex justify-between py-2 border-b border-gray-100">
           <span className="text-sm text-gray-600">{key}</span>
-          <span className="text-sm font-medium text-gray-900">{value}</span>
+          <span className="text-sm font-medium text-gray-900">{String(value)}</span>
         </div>
       ))}
     </div>
   </div>
 );
 
-const RelatedDocument = ({ title, date, type, relationship }) => (
+interface RelatedDocumentProps {
+  title: string;
+  date: string;
+  type: string;
+  relationship: string;
+}
+
+const RelatedDocument: React.FC<RelatedDocumentProps> = ({ title, date, type, relationship }) => (
   <div className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer">
     <div>
       <h5 className="font-medium text-gray-900 text-sm">{title}</h5>
@@ -314,7 +326,13 @@ const RelatedDocument = ({ title, date, type, relationship }) => (
   </div>
 );
 
-const HistoryItem = ({ action, timestamp, details }) => (
+interface HistoryItemProps {
+  action: string;
+  timestamp: string;
+  details: string;
+}
+
+const HistoryItem: React.FC<HistoryItemProps> = ({ action, timestamp, details }) => (
   <div className="flex items-start space-x-3">
     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
     <div>
